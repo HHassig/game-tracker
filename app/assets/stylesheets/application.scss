@@ -10,3 +10,25 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "cookies_eu";
+
+body.light {
+  color: black;
+  background-color: white;
+  .result-category {
+    background-color: black;
+    p {
+      color: white;
+    }
+  }
+}
+body.dark {
+  color: white;
+  background-color: black;
+  .result-category {
+    background-color: white;
+    p {
+      color: black;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<div class="game-container">
+  <% unless current_user %>
+      <h1>Daily Games Score</h1>
+      <p>Keep track of all your daily Wordle-inspired game scores.</p>
+      <p>Easily share your scores with friends and groups in one place.</p>
+      <p><%= link_to "Start now", new_user_session_path %></p>
+      <p><%= link_to "See games", games_path %></p>
+  <% else %>
+    <div class="cards">
+      <% @games.each do |game| %>
+        <div class="game-category">
+          <%= link_to game.name, game_path(game) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

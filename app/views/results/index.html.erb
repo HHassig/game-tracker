@@ -1,0 +1,23 @@
+<div class="result-container">
+  <h1><%= @game.name %></h1>
+  <h3>Average: <strong><%= @average_score %></strong></h3>
+  <p><%= link_to "New score", new_game_result_path %></p>
+  <div class="cards">
+    <% @results.each do |result| %>
+      <div class="result-category">
+        <% unless result.edition.nil? and result.score.nil? %>
+          <h3><%= link_to "#{result.edition}", game_result_path(@game, result) %></h3>
+          <p><%= result.display_score %><p>
+        <% else %>
+          <p>Invalid.</p>
+        <% end %>
+        <div class="change-links">
+          <p><%= link_to "<i class='fa-solid fa-pen-to-square'></i>".html_safe, edit_game_result_path(@game, result) %></p>
+          <%= link_to game_result_path(@game, result), data: {turbo_method: :delete, turbo_confirm: "Delete?"} do %>
+            <p><i class="fa-regular fa-trash-can"></i></p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

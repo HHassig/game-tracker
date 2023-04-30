@@ -1,0 +1,26 @@
+<div class="result-container">
+  <h1><%= @game.name %> <%= @result.edition %></h1>
+  <% if @result.user == current_user.id %>
+    <div class="result">
+      <% unless @result.edition.nil? and @result.score.nil? %>
+        <% if @result.clean(@result.guess).kind_of?(Array) %>
+          <% @result.clean(@result.guess).each do |line| %>
+            <%= line %>
+            <br>
+          <% end %>
+        <% else %>
+          <%= @result.clean(@result.guess) %>
+        <% end %>
+      <% else %>
+        <p>Invalid score!</p>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="result">
+      This isn't your score!
+    </div>
+  <% end %>
+  <p><%= link_to "All #{@game.name} results", game_results_path %></p>
+  <p><%= link_to "Play now", @game.url, target: :_blank %></p>
+  <p><%= link_to "New score", new_game_result_path %></p>
+</div>

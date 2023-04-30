@@ -1,0 +1,18 @@
+<div class="user-static">
+  <% if @user == current_user %>
+    <% unless @user.username %>
+      <h1>Hello, <%= @user.email %></h1>
+    <% else %>
+      <h1>Hello, <%= @user.username %></h1>
+    <% end %>
+    <%= simple_form_for(@user) do |f| %>
+      <%= f.input :username %>
+      <%= f.input :photo, as: :file %>
+      <%= f.submit %>
+    <% end %>
+  <% else %>
+    <h1>Not You!</h1>
+    <p>Don't try to edit someone else's profile!</p>
+    <p>Edit <%= link_to "your profile", edit_user_path(current_user) %> instead.</p>
+  <% end %>
+</div>
