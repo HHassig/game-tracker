@@ -3,6 +3,11 @@
   <h2><%= link_to "My scores", game_results_path(@game) %></h2>
   <h4><%= link_to "Record score", new_game_result_path(@game) %></h4>
   <p><%= link_to "Play now", @game.url, target: :_blank %></p>
-
-
 </div>
+<% unless @friends.nil? %>
+  <% @friends.each do |friend| %>
+    <div class="result-category">
+    <%= friend.username %>
+    </div>
+  <% end %>
+<% end %>

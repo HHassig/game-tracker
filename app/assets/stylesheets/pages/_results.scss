@@ -43,7 +43,32 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
 
+.friend-container {
+  text-align: center;
+  margin: auto;
+  width: 80%;
+  border-radius: 1em;
+  border: 1px solid black;
+
+}
+.friend-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1em;
+  margin: auto;
+  text-align: center;
+}
+.friend-result {
+  border-radius: 1em;
+  border: 1px solid black;
+  margin: auto;
+  text-align: center;
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 10em;
 }
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {

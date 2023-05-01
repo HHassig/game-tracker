@@ -38,6 +38,8 @@ class ResultsController < ApplicationController
   def show
     @game = Game.find(params[:game_id])
     @result = Result.find(params[:id])
+    @edition = @result.edition
+    @friends = current_user.following
   end
 
   def edit
