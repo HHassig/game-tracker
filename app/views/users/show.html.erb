@@ -12,6 +12,18 @@
         <p><%= link_to "Edit profile", edit_user_path(current_user) %></p>
         <p><%= link_to "Sign Out", destroy_user_session_path, data: { "turbo-method": :delete } %></p>
       </div>
+      <% if @following.size > 0 %>
+        <h4>Following</h4>
+        <% @following.each do |friend| %>
+          <p><%= link_to friend.username, users_path(friend) %></p>
+        <% end %>
+      <% end %>
+      <% if @followers.size > 0 %>
+        <h4>Followers</h4>
+        <% @followers.each do |friend| %>
+          <p><%= link_to friend.username, users_path(friend) %></p>
+        <% end %>
+      <% end %>
     </div>
   <% else %>
     <div class="card-product">
