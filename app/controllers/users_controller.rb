@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   def follow
     current_user.send_follow_request_to(@user)
+    @user.accept_follow_request_of(current_user)
     redirect_to user_path(@user)
   end
 
@@ -29,9 +30,9 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
-  def accept
-    current_user.accept_follow_request_of(@user)
-  end
+  # def accept
+  #   current_user.accept_follow_request_of(@user)
+  # end
 
   def decline
   end
