@@ -1,5 +1,10 @@
 <div class="result-container">
   <h1><%= @game.name %> <%= @result.edition %></h1>
+  <div class="result-links">
+    <p><%= button_to "All", game_results_path %></p>
+    <p><%= button_to "Play", @game.url, target: :_blank %></p>
+    <p><%= button_to "Record", new_game_result_path %></p>
+  </div>
   <div class="result">
     <h3><%= @user.username %></h3>
     <% unless @result.edition.nil? and @result.score.nil? %>
@@ -15,10 +20,6 @@
       <p>Invalid score!</p>
     <% end %>
   </div>
-
-  <p><%= link_to "All #{@game.name} results", game_results_path %></p>
-  <p><%= link_to "Play now", @game.url, target: :_blank %></p>
-  <p><%= link_to "New score", new_game_result_path %></p>
 </div>
 <% unless @friends.nil? %>
   <div class="friend-container">

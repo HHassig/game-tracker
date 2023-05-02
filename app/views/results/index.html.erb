@@ -1,7 +1,11 @@
 <div class="result-container">
   <h1><%= @game.name %></h1>
   <h3>Average: <strong><%= @average_score %></strong></h3>
-  <p><%= link_to "New score", new_game_result_path %></p>
+  <div class="result-links">
+    <p><%= button_to "All", game_results_path %></p>
+    <p><%= button_to "Play", @game.url, target: :_blank %></p>
+    <p><%= button_to "Record", new_game_result_path %></p>
+  </div>
   <div class="cards">
     <% @results.each do |result| %>
       <div class="result-category">

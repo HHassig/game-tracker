@@ -20,14 +20,6 @@
   padding: 1em;
   background-color: white;
 }
-.game-category {
-  border-radius: 1em;
-  border: 1px solid black;
-  width: 10em;
-  margin: auto;
-  text-align: center;
-  padding: 1em;
-}
 .result {
   border-radius: 1em;
   border: 1px solid black;
@@ -43,6 +35,14 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.result-links {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
 }
 
 .friend-container {
