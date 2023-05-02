@@ -32,7 +32,11 @@
           <div class="friend-result">
             <h4><%= link_to friend.username, user_path(friend) %></h4>
             <% friend_result = Result.find_by(user: friend, edition: @result.edition, game: @game) %>
-            <p><%= link_to friend_result.display_score, game_result_path(@game, friend_result) %></p>
+            <% unless friend_result.nil? %>
+              <p><%= link_to friend_result.display_score, game_result_path(@game, friend_result) %></p>
+            <% else %>
+              <p>Unplayed</p>
+            <% end %>
           </div>
         <% end %>
       </div>
