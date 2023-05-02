@@ -20,7 +20,6 @@
   <p><%= link_to "Play now", @game.url, target: :_blank %></p>
   <p><%= link_to "New score", new_game_result_path %></p>
 </div>
-
 <% unless @friends.nil? %>
   <div class="friend-container">
       <h2>Amigos</h2>
@@ -32,7 +31,7 @@
           <% @friends.each do |friend| %>
           <div class="friend-result">
             <h4><%= link_to friend.username, user_path(friend) %></h4>
-            <% friend_result = Result.find_by(params[game: @game, edition: @result.edition, user: friend]) %>
+            <% friend_result = Result.find_by(user: friend, edition: @result.edition, game: @game) %>
             <p><%= link_to friend_result.display_score, game_result_path(@game, friend_result) %></p>
           </div>
         <% end %>
