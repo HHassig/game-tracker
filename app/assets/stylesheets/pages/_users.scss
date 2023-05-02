@@ -19,9 +19,14 @@
 .follow-request p {
   margin: 0;
 }
-.follow {
+.follows {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: flex-start;
+}
+.follow {
+border-radius: 1em;
+background-color: #6699CC;
+padding: 1em;
 }

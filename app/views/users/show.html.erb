@@ -6,14 +6,14 @@
       <% unless @user.photo.key.nil? %>
         <%= cl_image_tag @user.photo.key, class: "avatar" %>
       <% else %>
-        <p><%= link_to "Add photo", edit_user_path(current_user) %></p>
+        <p><%= button_to "Add photo", edit_user_path(current_user), class: "btn btn-flat" %></p>
       <% end %>
-      <div class="card-product-infos">
-        <p><%= link_to "Edit profile", edit_user_path(current_user) %></p>
-        <p><%= link_to "Sign Out", destroy_user_session_path, data: { "turbo-method": :delete } %></p>
+      <div class="result-links">
+        <p><%= button_to "Edit", edit_user_path(current_user), class: "btn btn-flat" %></p>
+        <p><%= button_to "Log Out", destroy_user_session_path, class: "btn btn-flat", data: { "turbo-method": :delete } %></p>
       </div>
-      <div class="follow">
-        <div class="following">
+      <div class="follows">
+        <div class="follow">
           <h4>Following</h4>
           <% if @following.size > 0 %>
             <% @following.each do |friend| %>
@@ -21,7 +21,7 @@
             <% end %>
           <% end %>
         </div>
-        <div class="followers">
+        <div class="follow">
           <h4>Followers</h4>
           <% if @followers.size > 0 %>
             <% @followers.each do |friend| %>
@@ -40,11 +40,11 @@
       <% end %>
       <div class="card-product-infos">
         <% if current_user.following?(@user) %>
-          <%= button_to "<i class='fa-solid fa-user-slash'></i>".html_safe, unfollow_path(@user) %>
+          <%= button_to "<i class='fa-solid fa-user-slash'></i>".html_safe, unfollow_path(@user), class: "btn btn-flat" %>
         <% else %>
-          <%= button_to "<i class='fa-solid fa-user-plus'></i>".html_safe, follow_path(@user) %>
+          <%= button_to "<i class='fa-solid fa-user-plus'></i>".html_safe, follow_path(@user), class: "btn btn-flat" %>
         <% end %>
-        <p><%= link_to "My Profile", user_path(current_user) %></p>
+        <p><%= button_to "Me", user_path(current_user), class: "btn btn-flat" %></p>
       </div>
     </div>
   <% end %>
