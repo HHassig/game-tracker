@@ -1,5 +1,5 @@
 <div class="user-container">
-  <h1 class="visit-title"><%= @user.username %>'s Profile</h1>
+  <h1 class="visit-title"><%= @user.username %></h1>
   <% if @user == current_user %>
     <h5><%= @user.email %></h5>
     <div class="card-product general-card">
@@ -8,7 +8,7 @@
       <% else %>
         <p><%= button_to "Add photo", edit_user_path(current_user), class: "btn btn-flat" %></p>
       <% end %>
-      <div class="result-links">
+      <div class="user-links">
         <p><%= button_to "Edit", edit_user_path(current_user), class: "btn btn-flat" %></p>
         <p><%= button_to "Log Out", destroy_user_session_path, class: "btn btn-flat", data: { "turbo-method": :delete } %></p>
       </div>

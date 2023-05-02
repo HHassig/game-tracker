@@ -14,7 +14,7 @@
     <% end %>
       <% @games.each do |game| %>
         <div class="game">
-          <%= link_to game.name, game_path(game) %>
+          <%= button_to game.name, game_path(game), class: "btn btn-flat", method: :get %>
         </div>
       <% end %>
     </div>
