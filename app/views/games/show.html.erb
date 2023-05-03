@@ -1,6 +1,8 @@
 <div class="game-container">
   <h1><%= @game.name %></h1>
-  <h4><%= link_to "My scores", game_results_path(@game) %></h4>
-  <h4><%= link_to "Record score", new_game_result_path(@game) %></h4>
-  <h4><%= link_to "Play now", @game.url, target: :_blank %></h4>
+  <div class="result-links">
+    <p><%= button_to "Scores", game_results_path(@game), class: "btn btn-flat", method: :get %></p>
+    <p><%= button_to "Play", @game.url, class: "btn btn-flat", form: {target: '_blank'}  %></p>
+    <p><%= button_to "Record", new_game_result_path(@game), class: "btn btn-flat", method: :get %></p>
+  </div>
 </div>

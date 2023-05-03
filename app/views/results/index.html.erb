@@ -2,7 +2,7 @@
   <h1><%= @game.name %></h1>
   <h3>Average: <strong><%= @average_score %></strong></h3>
   <div class="result-links">
-    <p><%= button_to "Play", @game.url, target: :_blank, class: "btn btn-flat", method: :get, form: {target: '_blank'} %></p>
+    <p><%= button_to "Play", @game.url, class: "btn btn-flat", method: :get, form: {target: '_blank'} %></p>
     <p><%= button_to "Record", new_game_result_path(@game), class: "btn btn-flat", method: :get %></p>
   </div>
   <div class="cards">
