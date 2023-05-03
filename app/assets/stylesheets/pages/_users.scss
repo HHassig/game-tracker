@@ -16,6 +16,17 @@
   justify-content: space-evenly;
   align-items: center;
 }
+.search-box {
+  width: 15em;
+  margin: auto;
+  text-align: center;
+}
+.search-results {
+  margin: 1em;
+}
+.form-input {
+  border-radius: 1em;
+}
 .follow-request p {
   margin: 0;
 }

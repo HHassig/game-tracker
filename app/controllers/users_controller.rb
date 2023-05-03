@@ -1,8 +1,19 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_user
+  before_action :set_user, only: %i[show edit update follow unfollow]
 
   def index
+    if params[:search].present?
+      # sql_query = <<~SQL
+      #   users.username @@ :query
+      # SQL
+      @search_term = params[:search]
+      @user = User.find_by(username: @search_term)
+      # @user.find_or_create_by(username: "%#{@search_term}%")
+      # raise
+    end
+    @following = current_user.following
+    @followers = current_user.followers
   end
 
   def show

@@ -15,7 +15,7 @@
       <div class="follows">
         <div class="follow">
           <h4>Following</h4>
-          <% if @following.size > 0 %>
+          <% if @following %>
             <% @following.each do |friend| %>
               <p><%= link_to friend.username, users_path(friend) %></p>
             <% end %>
@@ -23,7 +23,7 @@
         </div>
         <div class="follow">
           <h4>Followers</h4>
-          <% if @followers.size > 0 %>
+          <% if @followers > 0 %>
             <% @followers.each do |friend| %>
               <p><%= link_to friend.username, users_path(friend) %></p>
             <% end %>
