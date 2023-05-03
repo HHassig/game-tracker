@@ -16,16 +16,20 @@
         <div class="follow">
           <h4>Following</h4>
           <% if @following %>
-            <% @following.each do |friend| %>
-              <p><%= link_to friend.username, users_path(friend) %></p>
+            <% if @following.size > 0 %>
+              <% @following.each do |friend| %>
+                <p><%= link_to friend.username, user_path(friend) %></p>
+              <% end %>
             <% end %>
           <% end %>
         </div>
         <div class="follow">
           <h4>Followers</h4>
-          <% if @followers > 0 %>
-            <% @followers.each do |friend| %>
-              <p><%= link_to friend.username, users_path(friend) %></p>
+          <% if @following %>
+            <% if @followers.size > 0 %>
+              <% @followers.each do |friend| %>
+                <p><%= link_to friend.username, user_path(friend) %></p>
+              <% end %>
             <% end %>
           <% end %>
         </div>
