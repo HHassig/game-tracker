@@ -19,23 +19,15 @@
       </div>
     <% end %>
   </div>
-  <h1>Friends</h1>
-  <div class="follows">
-    <div class="follow">
-      <h4>Following</h4>
-      <% if @following.size > 0 %>
-        <% @following.each do |friend| %>
-          <p><%= link_to friend.username, user_path(friend) %></p>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="follow">
-      <h4>Followers</h4>
-      <% if @followers.size > 0 %>
-        <% @followers.each do |friend| %>
-          <p><%= link_to friend.username, user_path(friend) %></p>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+  <h1>Top Players</h1>
+  <% if @games.size > 3 %>
+      <div class="games">
+    <% else %>
+      <div class="games-small">
+    <% end %>
+    <% @games.each do |game| %>
+      <div class="game">
+        <%= button_to game.name, game_path(game), class: "btn btn-wide", method: :get %>
+      </div>
+    <% end %>
 </div>

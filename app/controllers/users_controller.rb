@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update follow unfollow]
 
   def index
+    @games = Game.all
     if params[:search].present?
       # sql_query = <<~SQL
       #   users.username @@ :query
