@@ -3,6 +3,9 @@
   text-align: center;
   padding: 1em;
 }
+.game-container h1 {
+  margin-bottom: 1em;
+}
 .games {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -25,7 +28,7 @@
   width: 10em;
   margin: auto;
   text-align: center;
-  padding: 1em;
+  // padding: 1em;
 }
 
 // Smallest device
