@@ -35,7 +35,9 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
+  margin: auto;
   margin-top: 1em;
+  text-align: center;
 }
 .follow {
 border-radius: 1em;
@@ -49,6 +51,11 @@ width: 10em;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 10em;
+  margin: auto;
+}
+.user-games {
+  width: 10em;
 }
 @media (max-width: 768px) {
   .user-container {

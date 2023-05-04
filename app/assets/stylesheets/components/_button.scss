@@ -28,6 +28,23 @@
   background: #becfde;
   color: black;
 }
+.btn-user {
+  color: black;
+  padding: 0.5em;
+  width: 5em;
+  border-radius: 1em;
+  background: #becfde;
+  transition: background 0.3s ease;
+  margin: 0em 0.5em 0em 0.5em;
+}
+
+.btn-user:hover {
+  background: white;
+  color: black;
+}
+
+
+
 
 .btn-wide {
   color: black;

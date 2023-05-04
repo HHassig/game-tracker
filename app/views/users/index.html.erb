@@ -4,7 +4,11 @@
     <%= form_for "", url: users_path, role: "search", method: :get do %>
       <%= text_field_tag :search, @search_term, class:"form-control form-input", placeholder: "Search..." %>
     <% end %>
-    <% if @search_term and @user %>
+    <% if @search_term and @user.nil?%>
+      <div class="search-results">
+        <p><strong><%= @search_term %></strong> not found.</p>
+      </div>
+    <% elsif @search_term and @user %>
       <div class="search-results">
         <%= button_to @user.username, user_path(@user), class: "btn btn-wide", method: :get %>
         <% if current_user.following?(@user) %>
@@ -12,10 +16,6 @@
         <% else %>
           <%= button_to "<i class='fa-solid fa-user-plus'></i>".html_safe, follow_path(@user), class: "btn btn-flat" %>
         <% end %>
-      </div>
-    <% else %>
-      <div class="search-results">
-        <p><strong><%= @search_term %></strong> not found.</p>
       </div>
     <% end %>
   </div>

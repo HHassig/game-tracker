@@ -4,7 +4,7 @@
     <h5><%= @user.email %></h5>
     <div class="card-product general-card">
       <% unless @user.photo.key.nil? %>
-        <%= cl_image_tag @user.photo.key, class: "avatar" %>
+        <%= cl_image_tag @user.photo.key, class: "avatar-large" %>
       <% else %>
         <p><%= button_to "Add photo", edit_user_path(current_user), class: "btn btn-flat" %></p>
       <% end %>
@@ -38,9 +38,9 @@
   <% else %>
     <div class="card-product">
       <% unless @user.photo.key.nil? %>
-        <%= cl_image_tag @user.photo.key, class: "avatar" %>
+        <%= cl_image_tag @user.photo.key, class: "avatar-large" %>
       <% else %>
-        <p><%= image_tag "https://i.imgur.com/djGIukc.png", class: "avatar" %></p>
+        <p><%= image_tag "https://i.imgur.com/djGIukc.png", class: "avatar-large" %></p>
       <% end %>
       <div class="card-product-infos">
         <% if current_user.following?(@user) %>
@@ -48,7 +48,7 @@
         <% else %>
           <%= button_to "<i class='fa-solid fa-user-plus'></i>".html_safe, follow_path(@user), class: "btn btn-flat" %>
         <% end %>
-        <p><%= button_to "Me", user_path(current_user), class: "btn btn-flat" %></p>
+        <p><%= button_to "Me", user_path(current_user), class: "btn btn-flat", method: :get %></p>
       </div>
     </div>
   <% end %>

@@ -22,6 +22,20 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
+  def follow
+    @game = Game.find(params[:id])
+    current_user.send_follow_request_to(@game)
+    @game.accept_follow_request_of(current_user)
+    # raise
+    redirect_to game_path(@game)
+  end
+
+  def unfollow
+    @game = Game.find(params[:id])
+    current_user.unfollow_game(@game)
+    redirect_to game_path(@game)
+  end
+
   private
 
   def game_params
