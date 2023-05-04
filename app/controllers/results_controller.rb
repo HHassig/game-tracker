@@ -30,7 +30,7 @@ class ResultsController < ApplicationController
       @result.display_score = @result.get_display_score(@result.guess)
       @result.save
       unless @average.nil?
-        @results = Result.where(game: @game.id, user: current_user)
+        @results = Result.where(game: @game, user: current_user)
         @sum_score = 0
         @results.each do |result|
           @sum_score += result.score.to_i

@@ -22,6 +22,7 @@
 .search-box {
   width: 15em;
   margin: auto;
+  margin-bottom: 2em;
   text-align: center;
 }
 .search-results {
@@ -71,6 +72,20 @@ width: 11em;
 .user-small i {
   text-align: center;
   margin: auto;
+}
+.leader-scores {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // width: 90%;
+}
+.leader-category {
+  border-radius: 1em;
+  width: 10em;
+  margin: auto;
+  text-align: center;
+  padding: 1em;
+  background-color: #6699CC;
 }
 @media (max-width: 768px) {
   .user-container {

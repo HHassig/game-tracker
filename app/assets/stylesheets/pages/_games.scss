@@ -1,7 +1,7 @@
 .game-container {
   margin: auto;
   text-align: center;
-  padding: 1em;
+  // padding: 1em;
 }
 .game-container h1 {
   margin-bottom: 1em;
@@ -28,7 +28,7 @@
   width: 10em;
   margin: auto;
   text-align: center;
-  // padding: 1em;
+  padding: 1em;
 }
 
 // Smallest device
@@ -70,8 +70,5 @@
     grid-gap: 1em;
     margin: auto;
     text-align: center;
-  }
-  .game-container {
-    width: 95%;
   }
 }

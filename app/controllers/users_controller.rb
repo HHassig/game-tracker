@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     end
     @following = current_user.following
     @followers = current_user.followers
+    @results = Result.all
   end
 
   def show
