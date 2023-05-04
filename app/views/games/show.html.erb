@@ -2,7 +2,7 @@
   <h1><%= @game.name %></h1>
   <div class="result-links">
     <p><%= button_to "Scores", game_results_path(@game), class: "btn btn-flat", method: :get %></p>
-    <p><%= button_to "Play", @game.url, class: "btn btn-flat", form: { target: "_blank" } %></p>
+    <p><%= button_to "Play", @game.url, class: "btn btn-flat", form: { target: "_blank" }, method: :get %></p>
     <p><%= button_to "Record", new_game_result_path(@game), class: "btn btn-flat", method: :get %></p>
   </div>
 </div>
