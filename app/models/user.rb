@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   def set_defaults
     at_sign = self.email.index("@").to_i - 1
-    self.username ||= self.email[0..at_sign]
+    username = self.email[0..at_sign]
+    self.username ||= username[0..9]
   end
 end
