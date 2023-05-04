@@ -42,7 +42,19 @@
   background: white;
   color: black;
 }
+.btn-small {
+  color: black;
+  padding: 0.5em;
+  width: 2em;
+  border-radius: 1em;
+  background: #6699CC;
+  transition: background 0.3s ease;
+  margin: 0em 0.5em 0em 0.5em;
+}
 
+.btn-small i:hover {
+  color: #becfde;
+}
 
 
 

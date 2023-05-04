@@ -18,7 +18,14 @@
           <% if @following %>
             <% if @following.size > 0 %>
               <% @following.each do |friend| %>
-                <p><%= link_to friend.username, user_path(friend) %></p>
+                <div class="user-small">
+                  <%= link_to friend.username, user_path(friend) %>
+                  <% if current_user.following?(friend) %>
+                    <%= button_to "<i class='fa-solid fa-user-slash'></i>".html_safe, unfollow_path(friend), class: "btn btn-small" %>
+                  <% else %>
+                    <%= button_to "<i class='fa-solid fa-user-plus'></i>".html_safe, follow_path(friend), class: "btn btn-small" %>
+                  <% end %>
+                </div>
               <% end %>
             <% end %>
           <% end %>

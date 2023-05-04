@@ -57,6 +57,18 @@ width: 10em;
 .user-games {
   width: 10em;
 }
+.user-small {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+}
+.user-small i {
+  text-align: center;
+  margin: auto;
+}
 @media (max-width: 768px) {
   .user-container {
     width: 90%;
