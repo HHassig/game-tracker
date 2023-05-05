@@ -20,6 +20,9 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @everyone_results = Result.where(game: @game)
+    @everyone_average = get_average(@everyone_results)
+    @user_results = Result.where(game: @game, user: current_user)
   end
 
   def follow
@@ -40,5 +43,13 @@ class GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(:name, :url)
+  end
+
+  def get_average(results)
+    sum_score = 0
+    results.each do |result|
+      sum_score += result.score.to_i
+    end
+    '%.2f' % (sum_score.to_f / results.length)
   end
 end

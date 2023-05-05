@@ -12,7 +12,7 @@
       <div class="result-category">
         <% unless result.edition.nil? and result.score.nil? %>
           <h3><%= link_to "#{result.edition}", game_result_path(@game, result) %></h3>
-          <p><%= result.display_score %><p>
+          <h4><%= result.display_score %></h4>
         <% else %>
           <p>Invalid.</p>
         <% end %>
