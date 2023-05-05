@@ -37,6 +37,18 @@
   justify-content: space-evenly;
   align-items: center;
 }
+.game-big {
+  border-radius: 1em;
+  width: 15em;
+  margin: auto;
+  text-align: center;
+  padding: 1em;
+  background-color: #6699CC;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
 .game h5 a {
   color: black;
   text-decoration: none;
@@ -49,7 +61,10 @@
   justify-content: center;
   margin: 1em 1em 0em 1em;
 }
-
+.game a {
+  color: black;
+  text-decoration: none;
+}
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .games {
