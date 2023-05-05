@@ -4,7 +4,7 @@
   padding: 1em;
   border-radius: 1em;
   margin-top: 1em;
-  width: 50%;
+  // width: 50%;
   // background-color: #808080;
 }
 .user-container h1 {
@@ -92,7 +92,7 @@ width: 11em;
 }
 .leader-category {
   border-radius: 1em;
-  width: 100%;
+  width: 10em;
   margin: auto;
   text-align: center;
   padding: 1em;
@@ -100,6 +100,6 @@ width: 11em;
 }
 @media (max-width: 768px) {
   .user-container {
-    width: 90%;
+    // width: 90%;
   }
 }

@@ -58,16 +58,17 @@
 }
 .btn-small {
   color: black;
-  padding: 0.5em;
+  // padding: 0.5em;
   // width: 2em;
   border-radius: 1em;
-  background: #becfde;
+  background: white;
   transition: background 0.3s ease;
-  margin: 0em 0.5em 0em 0.5em;
+  margin: 0em 0.3em 0em 0.3em;
+  text-align: center;
 }
 
-.btn-small i:hover {
-  color: #6699CC;
+.btn-small:hover {
+  color: #becfde;
 }
 
 
