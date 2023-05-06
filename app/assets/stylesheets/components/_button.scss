@@ -28,6 +28,20 @@
   background: #becfde;
   color: black;
 }
+.btn-score {
+  color: black;
+  padding: 0.5em;
+  width: 5em;
+  border-radius: 1em;
+  background: white;
+  transition: background 0.3s ease;
+  margin: 0em 0.5em 0em 0.5em;
+}
+
+.btn-score:hover {
+  background: #becfde;
+  color: black;
+}
 .btn-games {
   color: black;
   padding: 0.5em;

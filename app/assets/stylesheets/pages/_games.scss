@@ -55,7 +55,7 @@
 }
 .game-big {
   border-radius: 1em;
-  width: 15em;
+  width: 40%;
   margin: auto;
   margin-top: 1em;
   text-align: center;
@@ -101,7 +101,7 @@
   border-radius: 1em;
   background-color: #6699CC;
   padding: 1em;
-  width: 28%;
+  width: 40%;
   text-align: center;
   margin: auto;
 }
@@ -112,6 +112,9 @@
   align-items: center;
   background-color: white;
   border-radius: 1em;
+  width: 90%;
+  text-align: center;
+  margin: auto;
 }
 .distribution-value {
   display: flex;
@@ -125,7 +128,7 @@
   background-color: #6699CC;
   border-radius: 1em;
   padding: 1em 0em 1em 0em;
-  width: 30%;
+  width: 40%;
   margin: auto;
   margin-top: 1em;
   margin-bottom: 1em;
@@ -209,5 +212,8 @@
   }
   .statistic {
     width: 10em;
+  }
+  .game-big {
+    width: 95%;
   }
 }

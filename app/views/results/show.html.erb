@@ -1,21 +1,23 @@
-<div class="result-container">
+<div class="game-container">
   <h1><%= @game.name %> <%= @result.edition %></h1>
   <div class="result-links">
-    <p><%= button_to "All", game_results_path, class: "btn btn-flat", method: :get %></p>
-    <p><%= button_to "Play", @game.url, class: "btn btn-flat", form: { target: "_blank" }, method: :get  %></p>
-    <p><%= button_to "Record", new_game_result_path, class: "btn btn-flat", method: :get %></p>
+    <p><%= button_to "Scores", game_results_path(@game), class: "btn btn-flat", method: :get %></p>
+    <p><%= button_to "Play", @game.url, class: "btn btn-flat", form: { target: "_blank" }, method: :get %></p>
+    <p><%= button_to "Record", new_game_result_path(@game), class: "btn btn-flat", method: :get %></p>
   </div>
   <div class="game-big">
     <h3><%= @user.username %></h3>
     <% unless @result.edition.nil? and @result.score.nil? %>
-      <% if @result.clean(@result.guess).kind_of?(Array) %>
-        <% @result.clean(@result.guess).each do |line| %>
-          <%= line %>
-          <br>
+      <div class="statistic">
+        <% if @result.clean(@result.guess).kind_of?(Array) %>
+          <% @result.clean(@result.guess).each do |line| %>
+            <%= line %>
+            <br>
+          <% end %>
+        <% else %>
+          <%= @result.clean(@result.guess) %>
         <% end %>
-      <% else %>
-        <%= @result.clean(@result.guess) %>
-      <% end %>
+      </div>
     <% else %>
       <p>Invalid score!</p>
     <% end %>
@@ -34,11 +36,13 @@
               <div class="game">
                 <h4><%= link_to friend.username, user_path(friend) %></h4>
                 <% friend_result = Result.find_by(user: friend, edition: @result.edition, game: @game) %>
-                <% unless friend_result.nil? %>
-                  <p><%= link_to friend_result.display_score, game_result_path(@game, friend_result) %></p>
-                <% else %>
-                  <p>Unplayed</p>
-                <% end %>
+                <div class="friend-score">
+                  <% unless friend_result.nil? %>
+                    <%= button_to friend_result.display_score, game_result_path(@game, friend_result), class: "btn btn-score", method: :get %>
+                  <% else %>
+                    Unplayed
+                  <% end %>
+                </div>
               </div>
             <% end %>
         <% end %>
