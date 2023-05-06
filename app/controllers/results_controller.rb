@@ -42,7 +42,7 @@ class ResultsController < ApplicationController
       @average.save!
       redirect_to game_result_path(@game, @result), notice: 'Result noted.'
     else
-      redirect_to new_game_result_path(@game)
+      redirect_to new_game_result_path(@game), notice: 'Result not valid, try again.'
     end
   end
 
