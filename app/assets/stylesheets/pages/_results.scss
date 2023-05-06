@@ -1,5 +1,5 @@
 .result-container {
-  // width: 80%;
+  width: 80%;
   margin: auto;
   text-align: center;
   padding: 1em;
@@ -48,10 +48,12 @@
 .result-links {
   display: flex;
   flex-direction: row;
+  margin: 0;
   margin: auto;
   text-align: center;
   justify-content: center;
-  margin: 1em;
+  // margin: 1em;
+  width: 30%;
 }
 
 .friend-container {

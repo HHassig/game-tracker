@@ -5,32 +5,11 @@
     <p><%= button_to "Play", @game.url, class: "btn btn-flat", form: { target: "_blank" }, method: :get %></p>
     <p><%= button_to "Record", new_game_result_path(@game), class: "btn btn-flat", method: :get %></p>
   </div>
-  <div class="distributions">
-    <h3>Distribution</h3>
-    <% if @user_results.size > 0 %>
-      <div class="distribution">
-        <% i = 0 %>
-        <% while i < @game.max_score %>
-          <div class="distribution-value">
-            <strong><%= i + 1 %></strong>
-            <%= @user_results.select{|result| result.score == (i + 1) }.size %>
-          </div>
-          <% i += 1 %>
-        <% end %>
-        <div class="distribution-value">
-          <strong>X</strong>
-          <%= @user_results.select{|result| result.score == (@game.max_score + 1) }.size %>
-        </div>
-      </div>
-    <% else %>
-      <p>You haven't played yet.</p>
-    <% end %>
-  </div>
   <div class="statistics-container">
     <h2>Statistics</h2>
     <% if @user_results.size > 0 %>
       <div class="statistics">
-        <div class="game">
+        <div class="statistic">
           <h3><%= current_user.username %></h3>
           <div class="stat">
             <strong>Average:</strong>
@@ -51,14 +30,14 @@
         </div>
       <% else %>
         <div class="statistics">
-          <div class="game">
+          <div class="statistic">
             <h3><%= current_user.username %></h3>
             <p>No scores</p>
             <p>Play now</p>
           </div>
       <% end %>
       <% if @everyone_results.size > 0 %>
-        <div class="game">
+        <div class="statistic">
           <h3>Everyone</h3>
           <div class="stat">
             <strong>Average:</strong>
@@ -78,7 +57,7 @@
           </div>
         </div>
       <% else %>
-          <div class="game">
+          <div class="statistic">
             <h3>Everyone</h3>
             <p>No scores</p>
             <p>Play now</p>
@@ -86,5 +65,26 @@
         </div>
       <% end %>
     </div>
+  </div>
+  <div class="distributions">
+    <h3>Distribution</h3>
+    <% if @user_results.size > 0 %>
+      <div class="distribution">
+        <% i = 0 %>
+        <% while i < @game.max_score %>
+          <div class="distribution-value">
+            <strong><%= i + 1 %></strong>
+            <%= @user_results.select{|result| result.score == (i + 1) }.size %>
+          </div>
+          <% i += 1 %>
+        <% end %>
+        <div class="distribution-value">
+          <strong>X</strong>
+          <%= @user_results.select{|result| result.score == (@game.max_score + 1) }.size %>
+        </div>
+      </div>
+    <% else %>
+      <p>You haven't played yet.</p>
+    <% end %>
   </div>
 </div>
