@@ -41,3 +41,4 @@
 .DS_Store
 .env*
 deploy.sh
+.both.sh
