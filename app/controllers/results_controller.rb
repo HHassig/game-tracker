@@ -28,7 +28,7 @@ class ResultsController < ApplicationController
     @result.edition = @result.get_edition(@result.guess)
     @result.display_score = @result.get_display_score(@result.guess)
     unless @result.score.nil?
-      result.save!
+      @result.save!
       unless @average.nil?
         @results = Result.where(game: @game, user: current_user)
         @sum_score = 0

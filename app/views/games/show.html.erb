@@ -5,25 +5,58 @@
     <p><%= button_to "Play", @game.url, class: "btn btn-flat", form: { target: "_blank" }, method: :get %></p>
     <p><%= button_to "Record", new_game_result_path(@game), class: "btn btn-flat", method: :get %></p>
   </div>
+  <div class="distributions">
+    <h3>Distribution</h3>
+    <div class="distribution">
+      <% i = 0 %>
+      <% while i < @game.max_score %>
+        <div class="distribution-value">
+          <strong><%= i + 1 %></strong>
+          x
+        </div>
+        <% i += 1 %>
+      <% end %>
+      <div class="distribution-value">
+        <strong>X</strong>
+        z
+      </div>
+    </div>
+  </div>
   <div class="statistics-container">
     <h2>Statistics</h2>
-    <div class="statistics">
-      <div class="game">
-        <h3><%= current_user.username %></h3>
-        <p><strong>Average:</strong> <%= Average.find_by(game: @game, user: current_user).average %></p>
-        <p><strong>Played:</strong> <%= @user_results.size %></p>
-        <p><strong>Best:</strong> <%= @user_results.sort_by(&:score).first.score %></p>
-        <p><strong>Win Rate:</strong> <%= '%.2f' % (((@user_results.select{|result| result.score < 7 }.size) / @user_results.size.to_f) * 100) %>%</p>
-        <p>Distribution</p>
-      </div>
-      <div class="game">
-        <h3>Everyone</h3>
-        <p><strong>Average:</strong> <%= @everyone_average %></p>
-        <p><strong>Played:</strong> <%= @everyone_results.size %></p>
-        <p><strong>Best:</strong> <%= @everyone_results.sort_by(&:score).first.score %></p>
-        <p><strong>Win Rate:</strong> <%= '%.2f' % (((@everyone_results.select{|result| result.score < 7 }.size) / @everyone_results.size.to_f) * 100) %>%</p>
-        <p>Distribution</p>
-      </div>
+    <% if @user_results.size > 0 %>
+      <div class="statistics">
+        <div class="game">
+          <h3><%= current_user.username %></h3>
+          <p><strong>Average:</strong> <%= @user_average %></p>
+          <p><strong>Played:</strong> <%= @user_results.size %></p>
+          <p><strong>Best:</strong> <%= @user_results.sort_by(&:score).first.score %></p>
+          <p><strong>Win Rate:</strong> <%= '%.2f' % (((@user_results.select{|result| result.score < @game.max_score+1 }.size) / @user_results.size.to_f) * 100) %>%</p>
+        </div>
+      <% else %>
+        <div class="statistics">
+          <div class="game">
+            <h3><%= current_user.username %></h3>
+            <p>No scores</p>
+            <p>Play now</p>
+          </div>
+      <% end %>
+      <% if @everyone_results.size > 0 %>
+        <div class="game">
+          <h3>Everyone</h3>
+          <p><strong>Average:</strong> <%= @everyone_average %></p>
+          <p><strong>Played:</strong> <%= @everyone_results.size %></p>
+          <p><strong>Best:</strong> <%= @everyone_results.sort_by(&:score).first.score %></p>
+          <p><strong>Win Rate:</strong> <%= '%.2f' % (((@everyone_results.select{|result| result.score < @game.max_score+1 }.size) / @everyone_results.size.to_f) * 100) %>%</p>
+        </div>
+      <% else %>
+          <div class="game">
+            <h3>Everyone</h3>
+            <p>No scores</p>
+            <p>Play now</p>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -23,6 +23,7 @@ class GamesController < ApplicationController
     @everyone_results = Result.where(game: @game)
     @everyone_average = get_average(@everyone_results)
     @user_results = Result.where(game: @game, user: current_user)
+    @user_average = Average.find_by(game: @game, user: current_user).average if Average.find_by(game: @game, user: current_user)
   end
 
   def follow
