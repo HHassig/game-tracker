@@ -26,8 +26,8 @@
   width: 60%;
 }
 .game {
+  width: 12em;
   border-radius: 1em;
-  width: 10em;
   margin: auto;
   text-align: center;
   padding: 1em;
@@ -60,6 +60,13 @@
   text-align: center;
   justify-content: center;
   margin: 1em 1em 0em 1em;
+}
+.stat {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 .game a {
   color: black;
@@ -160,5 +167,8 @@
   }
   .statistics-container {
     width: 100%;
+  }
+  .game {
+    width: 10em;
   }
 }
