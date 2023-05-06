@@ -1,5 +1,5 @@
 .result-container {
-  width: 80%;
+  // width: 80%;
   margin: auto;
   text-align: center;
   padding: 1em;
@@ -9,6 +9,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 1em;
   margin: auto;
+  margin-top: 1em;
   text-align: center;
 }
 .result-category {
@@ -124,7 +125,7 @@
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .cards {
     grid-template-columns: 1fr 1fr;
   }
