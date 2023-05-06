@@ -24,11 +24,11 @@ class ResultsController < ApplicationController
     @result.user = current_user.id
     @result.game = @game.id
     @average = Average.find_by(game: @game, user: current_user)
-    if @result.save
-      @result.score = @result.get_score(@result.guess)
-      @result.edition = @result.get_edition(@result.guess)
-      @result.display_score = @result.get_display_score(@result.guess)
-      @result.save
+    @result.score = @result.get_score(@result.guess)
+    @result.edition = @result.get_edition(@result.guess)
+    @result.display_score = @result.get_display_score(@result.guess)
+    unless @result.score.nil?
+      result.save!
       unless @average.nil?
         @results = Result.where(game: @game, user: current_user)
         @sum_score = 0
@@ -42,7 +42,7 @@ class ResultsController < ApplicationController
       @average.save!
       redirect_to game_result_path(@game, @result), notice: 'Result noted.'
     else
-      redirect_to root_path
+      redirect_to new_game_result_path(@game)
     end
   end
 
