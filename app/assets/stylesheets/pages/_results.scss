@@ -4,6 +4,11 @@
   text-align: center;
   padding: 1em;
 }
+.new-score {
+  width: 40%;
+  margin: auto;
+  text-align: center;
+}
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -130,6 +135,9 @@
     margin: auto;
     text-align: center;
   }
+  .new-score {
+    width: 95%;
+  }
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -146,6 +154,9 @@
     grid-gap: 1em;
     margin: auto;
     text-align: center;
+  }
+  .new-score {
+    width: 85%;
   }
 }
 
@@ -169,5 +180,8 @@
   }
   .result {
     width: 80%;
+  }
+  .new-score {
+    width: 75%;
   }
 }

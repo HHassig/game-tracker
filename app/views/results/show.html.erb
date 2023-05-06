@@ -8,6 +8,7 @@
   <div class="game-big">
     <h3><%= @user.username %></h3>
     <% unless @result.edition.nil? and @result.score.nil? %>
+      <h4><%= @result.score %></h4>
       <div class="statistic">
         <% if @result.clean(@result.guess).kind_of?(Array) %>
           <% @result.clean(@result.guess).each do |line| %>

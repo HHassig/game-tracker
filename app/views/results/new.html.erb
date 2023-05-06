@@ -1,7 +1,9 @@
 <div class="result-container">
   <h1>New <%= @game.name %> Score</h1>
-  <%= simple_form_for [@game, @result] do |f| %>
-    <%= f.input :guess, :input_html => {:rows => 10}, label: false %>
-    <%= f.submit %>
-  <% end %>
+  <div class="new-score">
+    <%= simple_form_for [@game, @result] do |f| %>
+      <%= f.input :guess, :input_html => {:rows => 10}, label: false %>
+      <%= f.submit class: "btn btn-wide" %>
+    <% end %>
+  </div>
 </div>
