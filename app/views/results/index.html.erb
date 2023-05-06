@@ -8,18 +8,20 @@
     <p><%= button_to "Record", new_game_result_path(@game), class: "btn btn-flat", method: :get %></p>
   </div>
   <div class="cards">
-    <% @results.each do |result| %>
+    <% @results.reverse.each do |result| %>
       <div class="result-category">
-        <% unless result.edition.nil? and result.score.nil? %>
-          <h3><%= link_to "#{result.edition}", game_result_path(@game, result) %></h3>
-          <h4><%= result.display_score %></h4>
-        <% else %>
-          <p>Invalid.</p>
-        <% end %>
+        <div class="result-info">
+          <% unless result.edition.nil? and result.score.nil? %>
+            <h2><%= link_to "#{result.edition}", game_result_path(@game, result) %></h2>
+            <h4><%= result.display_score %></h4>
+          <% else %>
+            <p>Invalid.</p>
+          <% end %>
+          </div>
         <div class="change-links">
-          <p><%= link_to "<i class='fa-solid fa-pen-to-square'></i>".html_safe, edit_game_result_path(@game, result) %></p>
+          <%= link_to "<i class='fa-solid fa-pen-to-square'></i>".html_safe, edit_game_result_path(@game, result) %>
           <%= link_to game_result_path(@game, result), data: {turbo_method: :delete, turbo_confirm: "Delete?"} do %>
-            <p><i class="fa-regular fa-trash-can"></i></p>
+            <i class="fa-regular fa-trash-can"></i>
           <% end %>
         </div>
       </div>
