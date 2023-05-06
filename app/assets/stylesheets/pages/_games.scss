@@ -8,6 +8,11 @@
 .game-container h1 {
   margin-bottom: 0.5em;
 }
+.logged-out {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
 .games {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
