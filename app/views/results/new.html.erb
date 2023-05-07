@@ -1,5 +1,10 @@
-<div class="result-container">
+<div class="game-container">
   <h1>New <%= @game.name %> Score</h1>
+  <div class="result-links">
+    <p><%= button_to "Scores", game_results_path(@game), class: "btn btn-flat", method: :get %></p>
+    <p><%= button_to "Play", @game.url, class: "btn btn-flat", form: { target: "_blank" }, method: :get %></p>
+    <p><%= button_to "Record", new_game_result_path(@game), class: "btn btn-flat", method: :get %></p>
+  </div>
   <div class="new-score">
     <%= simple_form_for [@game, @result] do |f| %>
       <%= f.input :guess, :input_html => {:rows => 10}, label: false %>

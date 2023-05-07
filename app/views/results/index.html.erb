@@ -1,11 +1,14 @@
 <div class="result-container">
   <h1><%= @game.name %></h1>
-  <% unless @average.nil? %>
-    <h3>Average: <strong><%= @average.average %></strong></h3>
-  <% end %>
   <div class="result-links">
+    <p><%= button_to "Info", game_path(@game), class: "btn btn-flat", method: :get %></p>
     <p><%= button_to "Play", @game.url, class: "btn btn-flat", form: { target: "_blank" }, method: :get %></p>
     <p><%= button_to "Record", new_game_result_path(@game), class: "btn btn-flat", method: :get %></p>
+  </div>
+  <div class="average-show">
+    <% unless @average.nil? %>
+      <h3>Average: <strong><%= @average.average %></strong></h3>
+    <% end %>
   </div>
   <div class="cards">
     <% @results.reverse.each do |result| %>
@@ -13,7 +16,7 @@
         <div class="result-info">
           <% unless result.edition.nil? and result.score.nil? %>
             <h2><%= link_to "#{result.edition}", game_result_path(@game, result) %></h2>
-            <h4><%= result.display_score %></h4>
+            <h4><%= link_to "#{result.display_score}", game_result_path(@game, result) %></h4>
           <% else %>
             <p>Invalid.</p>
           <% end %>
