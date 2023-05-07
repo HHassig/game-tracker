@@ -46,6 +46,23 @@ class Result < ApplicationRecord
     end
   end
 
+  def get_edition_int(guess)
+    as_array = guess.split()
+    if as_array[0] == "Framed"
+      return as_array[1].delete("#").to_i
+    end
+    if as_array[0] == "Wordle"
+      return as_array[1].to_i
+    end
+    if as_array[1] == "NewsGuesser"
+      edition = as_array[2]
+      return (Date.parse(edition) - Date.parse("1/1/2023")).to_i
+    end
+    if as_array[0] == "Poeltl"
+      return as_array[1].to_i
+    end
+  end
+
   def get_display_score(guess)
     as_array = guess.split()
     if as_array[0] == "Wordle"
