@@ -1,10 +1,12 @@
 <div class="result-container">
   <h1>Edit Result</h1>
-  <%= simple_form_for [@game, @result] do |f| %>
-    <%= f.input :guess, :input_html => {:rows => 10}, label: false %>
-    <%= f.submit class: "btn btn-wide" %>
-  <% end %>
-  <%= link_to game_result_path(@game, @result), data: {turbo_method: :delete, turbo_confirm: "Delete?"} do %>
-    <p><i class="fa-regular fa-trash-can"></i></p>
-  <% end %>
+  <div class="new-score">
+    <%= simple_form_for [@game, @result] do |f| %>
+      <%= f.input :guess, :input_html => {:rows => 10}, label: false %>
+      <%= f.submit class: "btn btn-wide" %>
+    <% end %>
+    <%= link_to game_result_path(@game, @result), data: {turbo_method: :delete, turbo_confirm: "Delete?"} do %>
+      <p><i class="fa-regular fa-trash-can"></i></p>
+    <% end %>
+  </div>
 </div>
