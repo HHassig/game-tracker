@@ -13,6 +13,7 @@ class ResultsController < ApplicationController
         result.save
         # TO REMOVE ^
       end
+      @results = @results.sort_by(&:edition_int)
       @average = Average.find_by(game: @game, user: current_user)
     end
   end
