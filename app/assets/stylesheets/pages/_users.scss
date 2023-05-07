@@ -46,7 +46,7 @@
 .follow {
 border-radius: 1em;
 background-color: #6699CC;
-padding: 1em;
+padding: 1em 0.5em 1em 0.5em;
 margin: 0em 0.5em 0em 0.5em;
 width: 11em;
 }
@@ -68,6 +68,7 @@ width: 11em;
   align-items: center;
   margin: auto;
   text-align: center;
+  width: 100%;
 }
 .user-small i {
   text-align: center;
@@ -101,5 +102,8 @@ width: 11em;
 @media (max-width: 768px) {
   .user-container {
     // width: 90%;
+  }
+  .follow {
+    width: 10em;
   }
 }
