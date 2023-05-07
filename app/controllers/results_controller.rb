@@ -62,6 +62,10 @@ class ResultsController < ApplicationController
   def update
     @game = Game.find(params[:game_id])
     @result = Result.find(params[:id])
+    @average = Average.find_by(game: @game, user: current_user)
+    @result.score = @result.get_score(@result.guess)
+    @result.edition = @result.get_edition(@result.guess)
+    @result.display_score = @result.get_display_score(@result.guess)
     if @result.update(result_params)
       redirect_to game_result_path(@game, @result)
     else

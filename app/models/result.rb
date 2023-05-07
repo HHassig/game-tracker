@@ -36,7 +36,10 @@ class Result < ApplicationRecord
       return "##{as_array[1]}"
     end
     if as_array[1] == "NewsGuesser"
-      return as_array[2]
+      edition = as_array[2]
+      year = Time.now.year.to_s
+      short_year = year[2..3]
+      return edition.sub!(year, short_year)
     end
     if as_array[0] == "Poeltl"
       return "##{as_array[1]}"
