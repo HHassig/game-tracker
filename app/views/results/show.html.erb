@@ -29,7 +29,7 @@
         <div class="game-statistic">
           <div class="game-stat">
             <strong>Leader:</strong>
-            <%= link_to (cl_image_tag @user.photo.key, class: "avatar-small"), user_path(User.find(@results.sort_by(&:score).first.user)) %>
+            <%= link_to (cl_image_tag @leader.photo.key, class: "avatar-small"), user_path(@leader) %>
           </div>
           <div class="game-stat">
             <strong>Played:</strong>

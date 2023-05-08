@@ -59,6 +59,7 @@ class ResultsController < ApplicationController
     @edition = @result.edition
     @friends = current_user.following
     @results = Result.where(game: @game, edition: @edition)
+    @leader = User.find(@results.sort_by(&:score).first.user)
   end
 
   def edit
