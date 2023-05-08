@@ -1,19 +1,20 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-navbar">
+  <div class="container-fluid">
     <div class="navbar-brand">
-        <%= link_to root_path do %>
-          <%= image_tag "https://i.imgur.com/ozA6JYB.png" %>
-        <% end %>
-        <% if cookies[:theme] == "light" %>
-          <%= link_to "<i class='fa-solid fa-moon'></i>".html_safe, root_path(theme: "dark") %>
-        <% else %>
-          <%= link_to "<i class='fa-solid fa-sun'></i>".html_safe, root_path(theme: "light") %>
-        <% end %>
+      <%= link_to root_path do %>
+        <%= image_tag "https://i.imgur.com/ozA6JYB.png" %>
+      <% end %>
+      <% if cookies[:theme] == "light" %>
+        <%= link_to "<i class='fa-solid fa-moon'></i>".html_safe, root_path(theme: "dark") %>
+      <% else %>
+        <%= link_to "<i class='fa-solid fa-sun'></i>".html_safe, root_path(theme: "light") %>
+      <% end %>
     </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
