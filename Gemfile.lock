@@ -6,15 +6,6 @@ GIT
       actionpack (>= 5.2)
       activemodel (>= 5.2)
 
-GIT
-  remote: https://github.com/railsformers/rails_cookie_consent.git
-  revision: 94ca686616a3a2822109d73618af6fd842856f87
-  tag: 0.4.4
-  specs:
-    rails_cookie_consent (0.4.3)
-      rails-i18n
-      railties
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -209,9 +200,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.5.0)
       loofah (~> 2.19, >= 2.19.1)
-    rails-i18n (7.0.6)
-      i18n (>= 0.7, < 2)
-      railties (>= 6.0.0, < 8)
     railties (7.0.4.3)
       actionpack (= 7.0.4.3)
       activesupport (= 7.0.4.3)
@@ -310,7 +298,6 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
-  rails_cookie_consent!
   redis (~> 5.0)
   sassc-rails
   selenium-webdriver

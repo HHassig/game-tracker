@@ -84,4 +84,3 @@ gem "redis", "~> 5.0"
 gem "followability", "~> 1.1"
 gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
-gem 'rails_cookie_consent', tag: '0.4.4', github: 'railsformers/rails_cookie_consent'
