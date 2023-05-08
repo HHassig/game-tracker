@@ -94,10 +94,7 @@ class Result < ApplicationRecord
     return as_array[3..] if as_array[0] == "Wordle"
     return as_array[3] if as_array[1] == "NewsGuesser"
     if as_array[0] == "Poeltl"
-      poetl_guess = as_array[3..]
-      poetl_guess.delete_at(2)
-      poetl_guess.delete_at(1)
-      poetl_guess.delete_at(1)
+      poetl_guess = as_array[6..]
       return poetl_guess
     end
   end
