@@ -10,6 +10,7 @@
       <h3><%= @user.username %></h3>
       <% unless @result.edition.nil? and @result.score.nil? %>
         <div class="game-guess">
+          <h5><%= @result.display_score %></h5>
           <% if @result.clean(@result.guess).kind_of?(Array) %>
             <% @result.clean(@result.guess).each do |line| %>
               <%= line %>

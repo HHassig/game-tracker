@@ -91,11 +91,12 @@ class Result < ApplicationRecord
   def clean(guess)
     as_array = guess.split()
     return as_array[3..as_array.size - 2].join() if as_array[0] == "Framed"
-    return as_array[2..] if as_array[0] == "Wordle"
+    return as_array[3..] if as_array[0] == "Wordle"
     return as_array[3] if as_array[1] == "NewsGuesser"
     if as_array[0] == "Poeltl"
       poetl_guess = as_array[3..]
       poetl_guess.delete_at(2)
+      poetl_guess.delete_at(1)
       poetl_guess.delete_at(1)
       return poetl_guess
     end
