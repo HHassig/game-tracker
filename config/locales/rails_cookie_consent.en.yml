@@ -1,0 +1,37 @@
+en:
+  rails_cookie_consent:
+    settings:
+      force_consent: true
+    title: We use cookies!
+    description: Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.
+    link_text: Nastavens Cookies
+    primary_btn:
+      text: Accept all
+      role: accept_all # accept_selected, accept_all, settings
+    secondary_btn:
+      text: Customize
+      role: settings # accept_selected, accept_all, settings
+    settings_modal:
+      title: Cookie preferences
+      save_settings_btn: Save
+      accept_all_btn: Accept all
+      reject_all_btn: Reject all
+      close_btn_label: Close
+      general_title: ""
+      general_description: ""
+    cookie_table_headers:
+      - col1: Name
+      - col2: Expiration
+      - col3: Access
+      - col4: Description
+      - col5: Security
+    cookie_types:
+      necessary:
+        title: Necessary
+        description: Desc
+      required:
+        title: Required
+        description: Desc
+        cookie_table:
+          - col1: Val
+            col2: Second val

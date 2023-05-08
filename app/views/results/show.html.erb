@@ -1,6 +1,5 @@
 <div class="game-container">
   <h1><%= @game.name %> <%= @result.edition %></h1>
-  <%= @result.edition_int %>
   <div class="result-links">
     <p><%= button_to "Scores", game_results_path(@game), class: "btn btn-flat", method: :get %></p>
     <p><%= button_to "Play", @game.url, class: "btn btn-flat", form: { target: "_blank" }, method: :get %></p>

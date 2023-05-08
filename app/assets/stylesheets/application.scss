@@ -10,13 +10,70 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "cookies_eu";
 
 body.light {
   color: black;
   background-color: white;
+  .navbar-lewagon {
+    background-color: white;
+  }
+  .nav-link {
+    color: black;
+  }
 }
 body.dark {
   color: white;
   background-color: black;
+  .navbar-lewagon {
+    background-color: black;
+  }
+  .nav-link {
+    color: white;
+  }
+  .btn-small {
+    background: black;
+    color: white;
+  }
+  p {
+    color: black;
+  }
+  .fa-list {
+    color: white;
+  }
+  .fa-play {
+    color: white;
+  }
+  .fa-floppy-disk {
+    color: white;
+  }
+  .result-info {
+    background: black;
+  }
+  .result-info a {
+    color: white;
+  }
+  .fa-pen-to-square {
+    color: black;
+  }
+  .fa-trash-can {
+    color: black;
+  }
+  h2 {
+    color: black;
+  }
+  h3 {
+    color: black;
+  }
+  .statistic {
+    background: black;
+  }
+  .statistic h3 {
+    color: white;
+  }
+  .distribution {
+    background: black;
+  }
+  .follow h4 {
+    color: black;
+  }
 }

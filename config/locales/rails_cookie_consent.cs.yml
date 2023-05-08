@@ -1,0 +1,38 @@
+cs:
+  rails_cookie_consent:
+    settings:
+      force_consent: true
+    title: Tento web využívá cookies
+    description: Na těchto webových stránkách se používají soubory cookies a další síťové identifikátory, které mohou obsahovat osobní údaje. # <button type="button" data-cc="c-settings" class="cc-link">Podrobné nastavení</button>
+    link_text: Nastavení Cookies
+    primary_btn:
+      text: Povolit vše
+      role: accept_all # accept_selected, accept_all, settings
+    secondary_btn:
+      text: Podrobné nastavení
+      role: settings # accept_selected, accept_all, settings
+    settings_modal:
+      title: Nastavení cookies
+      save_settings_btn: Uložit
+      accept_all_btn: Povolit vše
+      reject_all_btn: Zamítnout vše
+      close_btn_label: Zavřít
+      general_title: ""
+      general_description: ""
+    cookie_table_headers:
+      - col1: Název
+      - col2: Expirace
+      - col3: Kdo má přístup
+      - col4: Popis
+      - col5: Bezpečnost
+    cookie_types:
+      # define your cookies here
+      required:
+        title: Nutné
+        description: Nutné cookies
+        cookie_table:
+          - col1: cc_cookie
+            col2: 365 dní
+            col3: Vlastní
+            col4: Uložení preferencí cookies
+            col5: "-"
