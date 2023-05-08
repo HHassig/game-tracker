@@ -58,6 +58,7 @@ class ResultsController < ApplicationController
     @user = User.find(@result.user)
     @edition = @result.edition
     @friends = current_user.following
+    @results = Result.where(game: @game, edition: @edition)
   end
 
   def edit

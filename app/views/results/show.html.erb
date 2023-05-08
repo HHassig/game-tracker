@@ -5,23 +5,49 @@
     <p><%= button_to "Play", @game.url, class: "btn btn-flat", form: { target: "_blank" }, method: :get %></p>
     <p><%= button_to "Record", new_game_result_path(@game), class: "btn btn-flat", method: :get %></p>
   </div>
-  <div class="game-big">
-    <h3><%= @user.username %></h3>
-    <% unless @result.edition.nil? and @result.score.nil? %>
-      <h4><%= @result.score %></h4>
-      <div class="statistic">
-        <% if @result.clean(@result.guess).kind_of?(Array) %>
-          <% @result.clean(@result.guess).each do |line| %>
-            <%= line %>
-            <br>
+  <div class="game-stats">
+    <div class="game-big">
+      <h3><%= @user.username %></h3>
+      <% unless @result.edition.nil? and @result.score.nil? %>
+        <div class="game-guess">
+          <% if @result.clean(@result.guess).kind_of?(Array) %>
+            <% @result.clean(@result.guess).each do |line| %>
+              <%= line %>
+              <br>
+            <% end %>
+          <% else %>
+            <%= @result.clean(@result.guess) %>
           <% end %>
-        <% else %>
-          <%= @result.clean(@result.guess) %>
-        <% end %>
-      </div>
-    <% else %>
-      <p>Invalid score!</p>
-    <% end %>
+        </div>
+      <% else %>
+        <p>Invalid score!</p>
+      <% end %>
+    </div>
+    <div class="game-big">
+      <h3><%= @result.edition %>'s Stats</h3>
+      <% unless @result.edition.nil? and @result.score.nil? %>
+        <div class="game-statistic">
+          <div class="game-stat">
+            <strong>Leader:</strong>
+            <%= link_to (cl_image_tag @user.photo.key, class: "avatar-small"), user_path(User.find(@results.sort_by(&:score).first.user)) %>
+          </div>
+          <div class="game-stat">
+            <strong>Played:</strong>
+            <%= @results.size %>
+          </div>
+          <div class="game-stat">
+            <strong>Best:</strong>
+            <%= @results.sort_by(&:score).first.score %>
+          </div>
+          <div class="game-stat">
+            <strong>Worst:</strong>
+            <%= @results.sort_by(&:score).reverse.first.score %>
+          </div>
+        </div>
+      <% else %>
+        <p>Invalid score!</p>
+      <% end %>
+    </div>
   </div>
 </div>
 <% unless @friends.nil? %>
