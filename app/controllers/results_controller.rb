@@ -14,6 +14,7 @@ class ResultsController < ApplicationController
         # TO REMOVE ^
       end
       @results = @results.sort_by(&:edition_int)
+      @results = @results.paginate(page: params[:page], per_page: 8)
       @average = Average.find_by(game: @game, user: current_user)
     end
   end

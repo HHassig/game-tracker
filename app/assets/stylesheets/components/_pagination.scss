@@ -1,0 +1,29 @@
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  width: 17em;
+  margin: auto;
+  margin-top: 1em;
+  align-items: center;
+  background-color: #6699CC;
+  border-radius: 1em;
+  padding: 0.5em 1em 0.5em 1em;
+}
+
+.previous_page, .disabled, .current, .pagination a {
+  color: black;
+}
+
+.current {
+  color: black;
+  background-color: white;
+  padding: 0.5em;
+  text-align: center;
+  padding: 0.5em 1em 0.5em 1em;
+  border-radius: 1em;
+}
+
+.pagination a:hover {
+  color: #becfde;
+  font-weight: 600;
+}
