@@ -1,30 +1,28 @@
 <div class="game-container">
+  <h1>Daily Games Scores</h1>
   <% unless current_user %>
     <div class="logged-out">
-      <h1>Daily Games Score</h1>
       <p>Keep track of all your daily Wordle-inspired game scores.</p>
       <p>Easily share your scores with friends and groups in one place.</p>
       <p><%= button_to "Start now", new_user_registration_path, class: "btn btn-wide", method: :get %></p>
       <!-- <p><%= button_to "See games", games_path, class: "btn btn-wide", method: :get %></p> -->
     </div>
-  <% else %>
-    <h1>Daily Games</h1>
-    <% if @games.size > 3 %>
-      <div class="games">
-    <% else %>
-      <div class="games-small">
-    <% end %>
-      <% @games.each do |game| %>
-        <div class="game">
-          <%# <%= button_to game.name, game_path(game), class: "btn btn-wide", method: :get %>
-          <h5><%= link_to game.name, game_path(game) %><h5>
-          <div class="quick-links">
-            <p><%= button_to "<i class='fa-solid fa-list'></i>".html_safe, game_results_path(game), class: "btn btn-small", method: :get %></p>
-            <p><%= button_to "<i class='fa-solid fa-play'></i>".html_safe, game.url, class: "btn btn-small", form: { target: "_blank" }, method: :get %></p>
-            <p><%= button_to "<i class='fa-solid fa-floppy-disk'></i>".html_safe, new_game_result_path(game), class: "btn btn-small", method: :get %></p>
-          </div>
-        </div>
-      <% end %>
-    </div>
   <% end %>
+  <% if @games.size > 3 %>
+    <div class="games">
+  <% else %>
+    <div class="games-small">
+  <% end %>
+    <% @games.each do |game| %>
+      <div class="game">
+        <%# <%= button_to game.name, game_path(game), class: "btn btn-wide", method: :get %>
+        <h5><%= link_to game.name, game_path(game) %><h5>
+        <div class="quick-links">
+          <p><%= button_to "<i class='fa-solid fa-list'></i>".html_safe, game_results_path(game), class: "btn btn-small", method: :get %></p>
+          <p><%= button_to "<i class='fa-solid fa-play'></i>".html_safe, game.url, class: "btn btn-small", form: { target: "_blank" }, method: :get %></p>
+          <p><%= button_to "<i class='fa-solid fa-floppy-disk'></i>".html_safe, new_game_result_path(game), class: "btn btn-small", method: :get %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
