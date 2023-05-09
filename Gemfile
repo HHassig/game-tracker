@@ -85,3 +85,4 @@ gem "followability", "~> 1.1"
 gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
 gem 'will_paginate'
+gem 'kaminari'

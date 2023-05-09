@@ -2,20 +2,8 @@ class ResultsController < ApplicationController
   def index
     @game = Game.find(params[:game_id])
     @user = current_user
-    @results = Result.where(game: @game.id, user: current_user)
-    if @results.length > 0
-      @sum_score = 0
-      @results.each do |result|
-        @sum_score += result.score.to_i
-        # TO REMOVE
-        result.edition_int = result.get_edition_int(result.guess)
-        result.save
-        # TO REMOVE ^
-        @results = @results.sort_by(&:edition_int)
-        @results = @results.paginate(page: params[:page], per_page: 8)
-      end
-      @average = Average.find_by(game: @game, user: current_user)
-    end
+    @average = Average.find_by(game: @game, user: current_user)
+    @results = Result.where(game: @game.id, user: current_user).sort_by(&:edition_int)
   end
 
   def new
