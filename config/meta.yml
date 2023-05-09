@@ -1,0 +1,5 @@
+meta_product_name: "Daily Games Score"
+meta_title: "Daily Games Score - Easily record and share your daily scores of all Wordle-inspired games."
+meta_description: "Easily record and share your daily scores of all Wordle-inspired games."
+meta_image: "https://i.imgur.com/ozA6JYB.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
