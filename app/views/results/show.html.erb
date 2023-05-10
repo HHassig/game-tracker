@@ -30,7 +30,11 @@
         <div class="game-statistic">
           <div class="game-stat">
             <strong>Leader:</strong>
-            <%= link_to (cl_image_tag @leader.photo.key, class: "avatar-small"), user_path(@leader) %>
+            <% if @leader.photo.key.nil? %>
+              <%= link_to (image_tag "https://i.imgur.com/djGIukc.png", class: "avatar-small"), user_path(@leader) %>
+            <% else %>
+              <%= link_to (cl_image_tag @leader.photo.key, class: "avatar-small"), user_path(@leader) %>
+            <% end %>
           </div>
           <div class="game-stat">
             <strong>Played:</strong>
