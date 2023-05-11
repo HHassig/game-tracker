@@ -7,28 +7,18 @@
       <p><%= button_to "Start now", new_user_registration_path, class: "btn btn-wide", method: :get %></p>
     </div>
   <% end %>
-  <div class="result-links">
-    <p><%= link_to "My Games", "javascript:myGames()", class: "btn btn-js  btn-active", id: "btn-my-games" %></p>
-    <p><%= link_to "All Games", "javascript:allGames()", class: 'btn btn-js', id: "btn-all-games" %></p>
-  </div>
-  <% if @games.size > 3 %>
-    <div class="games">
-  <% else %>
-    <div class="games-small">
-  <% end %>
-  <% @my_games.each do |game| %>
-      <div class="game">
-        <h5><%= link_to Game.find(game).name, game_path(Game.find(game)) %><h5>
-        <div class="quick-links">
-          <p><%= button_to "<i class='fa-solid fa-list'></i>".html_safe, game_results_path(Game.find(game)), class: "btn btn-small", method: :get %></p>
-          <p><%= button_to "<i class='fa-solid fa-play'></i>".html_safe, Game.find(game).url, class: "btn btn-small", form: { target: "_blank" }, method: :get %></p>
-          <p><%= button_to "<i class='fa-solid fa-floppy-disk'></i>".html_safe, new_game_result_path(Game.find(game)), class: "btn btn-small", method: :get %></p>
-        </div>
-      </div>
+<% if current_user %>
+    <div class="result-links">
+      <p><%= link_to "My Games", "javascript:myGames()", class: "btn btn-js  btn-active", id: "btn-my-games" %></p>
+      <p><%= link_to "All Games", "javascript:allGames()", class: 'btn btn-js', id: "btn-all-games" %></p>
+    </div>
+    <% if @games.size > 3 %>
+      <div class="games">
+    <% else %>
+      <div class="games-small">
     <% end %>
-    <% if @other_games.size > 0 %>
-      <% @other_games.each do |game| %>
-        <div class="game all-games games-all" id="all-games">
+    <% @my_games.each do |game| %>
+        <div class="game">
           <h5><%= link_to Game.find(game).name, game_path(Game.find(game)) %><h5>
           <div class="quick-links">
             <p><%= button_to "<i class='fa-solid fa-list'></i>".html_safe, game_results_path(Game.find(game)), class: "btn btn-small", method: :get %></p>
@@ -37,8 +27,36 @@
           </div>
         </div>
       <% end %>
+      <% if @other_games.size > 0 %>
+        <% @other_games.each do |game| %>
+          <div class="game all-games games-all" id="all-games">
+            <h5><%= link_to Game.find(game).name, game_path(Game.find(game)) %><h5>
+            <div class="quick-links">
+              <p><%= button_to "<i class='fa-solid fa-list'></i>".html_safe, game_results_path(Game.find(game)), class: "btn btn-small", method: :get %></p>
+              <p><%= button_to "<i class='fa-solid fa-play'></i>".html_safe, Game.find(game).url, class: "btn btn-small", form: { target: "_blank" }, method: :get %></p>
+              <p><%= button_to "<i class='fa-solid fa-floppy-disk'></i>".html_safe, new_game_result_path(Game.find(game)), class: "btn btn-small", method: :get %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <% if @games.size > 3 %>
+      <div class="games">
+    <% else %>
+      <div class="games-small">
     <% end %>
-  </div>
+    <% @games.each do |game| %>
+        <div class="game">
+          <h5><%= link_to game.name, game_path(game) %><h5>
+          <div class="quick-links">
+            <p><%= button_to "<i class='fa-solid fa-list'></i>".html_safe, game_results_path(game), class: "btn btn-small", method: :get %></p>
+            <p><%= button_to "<i class='fa-solid fa-play'></i>".html_safe, game.url, class: "btn btn-small", form: { target: "_blank" }, method: :get %></p>
+            <p><%= button_to "<i class='fa-solid fa-floppy-disk'></i>".html_safe, new_game_result_path(game), class: "btn btn-small", method: :get %></p>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
 </div>
 <script>
   function allGames() {
