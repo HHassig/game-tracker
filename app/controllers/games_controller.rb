@@ -2,6 +2,17 @@ class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
   def index
     @games = Game.all
+    @my_games = []
+    Result.where(user: current_user).each do |result|
+      @my_games << result.game
+    end
+    @my_games = @my_games.uniq
+    @other_games = []
+    Game.ids.each do |game|
+      unless @my_games.include? game
+        @other_games << game
+      end
+    end
   end
 
   # def new

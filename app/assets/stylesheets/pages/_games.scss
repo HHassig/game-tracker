@@ -23,6 +23,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 1em;
   margin: auto;
+  margin-top: 1em;
   text-align: center;
 }
 .games-small {
@@ -31,6 +32,7 @@
   justify-content: space-evenly;
   align-items: center;
   margin: auto;
+  margin-top: 1em;
   text-align: center;
   width: 60%;
 }
@@ -114,6 +116,9 @@
 .statistic h5 a {
   color: black;
   text-decoration: none;
+}
+.all-games {
+  display: none;
 }
 .quick-links {
   display: flex;
