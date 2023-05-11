@@ -111,6 +111,9 @@ class Result < ApplicationRecord
     end
     if as_array[2] == "contexto.me"
       temp = as_array[-6..as_array.length]
+      tips = "#{as_array[11]} tips :(" if as_array[12] == "tips."
+      tips = "1 tip :(" if as_array[12] == "tips." && as_array[11].to_i == 1
+      return [tips, "#{temp[0]} #{temp[1]}", "#{temp[2]} #{temp[3]}", "#{temp[4]} #{temp[5]}"] if as_array[12] == "tips."
       return ["#{temp[0]} #{temp[1]}", "#{temp[2]} #{temp[3]}", "#{temp[4]} #{temp[5]}"]
     end
   end
