@@ -25,7 +25,11 @@
           </div>
           <div class="stat">
             <strong>Win %:</strong>
-            <%= '%.2f' % (((@user_results.select{|result| result.score < @game.max_score+1 }.size) / @user_results.size.to_f) * 100) %>
+            <% unless @game.max_score.nil? %>
+              <%= '%.2f' % (((@user_results.select{|result| result.score < @game.max_score+1 }.size) / @user_results.size.to_f) * 100) %>
+            <% else %>
+              100%
+            <% end %>
           </div>
         </div>
       <% else %>
@@ -53,7 +57,11 @@
           </div>
           <div class="stat">
             <strong>Win %:</strong>
-            <%= '%.2f' % (((@everyone_results.select{|result| result.score < @game.max_score+1 }.size) / @everyone_results.size.to_f) * 100) %>
+            <% unless @game.max_score.nil? %>
+              <%= '%.2f' % (((@everyone_results.select{|result| result.score < @game.max_score+1 }.size) / @everyone_results.size.to_f) * 100) %>
+            <% else %>
+              100%
+            <% end %>
           </div>
         </div>
       <% else %>
@@ -66,25 +74,27 @@
       <% end %>
     </div>
   </div>
-  <div class="distributions">
-    <h3>Distribution</h3>
-    <% if @user_results.size > 0 %>
-      <div class="distribution">
-        <% i = 0 %>
-        <% while i < @game.max_score %>
+  <% unless @game.max_score.nil? %>
+    <div class="distributions">
+      <h3>Distribution</h3>
+      <% if @user_results.size > 0 %>
+        <div class="distribution">
+          <% i = 0 %>
+          <% while i < @game.max_score %>
+            <div class="distribution-value">
+              <strong><%= i + 1 %></strong>
+              <%= @user_results.select{|result| result.score == (i + 1) }.size %>
+            </div>
+            <% i += 1 %>
+          <% end %>
           <div class="distribution-value">
-            <strong><%= i + 1 %></strong>
-            <%= @user_results.select{|result| result.score == (i + 1) }.size %>
+            <strong>X</strong>
+            <%= @user_results.select{|result| result.score == (@game.max_score + 1) }.size %>
           </div>
-          <% i += 1 %>
-        <% end %>
-        <div class="distribution-value">
-          <strong>X</strong>
-          <%= @user_results.select{|result| result.score == (@game.max_score + 1) }.size %>
         </div>
-      </div>
-    <% else %>
-      <p>You haven't played yet.</p>
-    <% end %>
-  </div>
+      <% else %>
+        <p>You haven't played yet.</p>
+      <% end %>
+    </div>
+  <% end %>
 </div>

@@ -25,6 +25,9 @@ class Result < ApplicationRecord
       score = 9 if score == "X"
       return score
     end
+    if as_array[2] == "contexto.me"
+      return as_array[8].to_i
+    end
   end
 
   def get_edition(guess)
@@ -44,6 +47,9 @@ class Result < ApplicationRecord
     if as_array[0] == "Poeltl"
       return "##{as_array[1]}"
     end
+    if as_array[2] == "contexto.me"
+      return as_array[3]
+    end
   end
 
   def get_edition_int(guess)
@@ -60,6 +66,9 @@ class Result < ApplicationRecord
     end
     if as_array[0] == "Poeltl"
       return as_array[1].to_i
+    end
+    if as_array[2] == "contexto.me"
+      return as_array[3].delete("#").to_i
     end
   end
 
@@ -86,6 +95,9 @@ class Result < ApplicationRecord
       score = 9 if score == "X"
       return "#{score}/8"
     end
+    if as_array[2] == "contexto.me"
+      return as_array[8]
+    end
   end
 
   def clean(guess)
@@ -96,6 +108,10 @@ class Result < ApplicationRecord
     if as_array[0] == "Poeltl"
       poetl_guess = as_array[6..]
       return poetl_guess
+    end
+    if as_array[2] == "contexto.me"
+      temp = as_array[-6..as_array.length]
+      return ["#{temp[0]} #{temp[1]}", "#{temp[2]} #{temp[3]}", "#{temp[4]} #{temp[5]}"]
     end
   end
 end
