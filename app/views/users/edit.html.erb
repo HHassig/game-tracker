@@ -1,15 +1,17 @@
-<div class="user-static">
+<div class="user-container">
   <% if @user == current_user %>
     <% unless @user.username %>
       <h1>Hello, <%= @user.email %></h1>
     <% else %>
       <h1>Hello, <%= @user.username %></h1>
     <% end %>
-    <%= simple_form_for(@user) do |f| %>
-      <%= f.input :username %>
-      <%= f.input :photo, as: :file %>
-      <%= f.submit %>
-    <% end %>
+    <div class="new-score">
+      <%= simple_form_for(@user) do |f| %>
+        <%= f.input :username %>
+        <%= f.input :photo, as: :file %>
+        <%= f.submit %>
+      <% end %>
+    </div>
   <% else %>
     <h1>Not You!</h1>
     <p>Don't try to edit someone else's profile!</p>
