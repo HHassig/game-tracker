@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
-      render :new, status: :unprocessable_entity
+      redirect_to user_path(@user), notice: 'Username already taken.'
     end
   end
 
