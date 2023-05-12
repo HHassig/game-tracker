@@ -7,7 +7,7 @@
   </div>
   <% unless @results.nil? %>
     <div class="average-show">
-      <% unless @average.nil? %>
+      <% unless @average.nil? || @average == 0 %>
         <h3>Average: <strong><%= @average.average %></strong></h3>
       <% end %>
     </div>
