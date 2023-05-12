@@ -20,22 +20,18 @@
     <% end %>
   </div>
   <h1>Leaderboard</h1>
-  <% if @games.size > 3 %>
-    <div class="games">
-  <% else %>
-    <div class="games-small">
-  <% end %>
-      <% @games.each do |game| %>
-        <% top_3 = Average.where(game: game).sort_by(&:average) %>
-        <div class="leader-category">
-          <h4><%= button_to game.name, game_path(game), class: "btn btn-small", method: :get %></h4>
-          <% top_3[0..2].each do |avg| %>
-            <div class="leader-scores">
-              <p><%= link_to User.find_by(id: avg.user).username, user_path(avg.user) %></p>
-              <p><%= avg.average %></p>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+  <div class="games">
+    <% @games.each do |game| %>
+      <% top_3 = Average.where(game: game).sort_by(&:average) %>
+      <div class="leader-category">
+        <h4><%= button_to game.name, game_path(game), class: "btn btn-small", method: :get %></h4>
+        <% top_3[0..2].each do |avg| %>
+          <div class="leader-scores">
+            <p><%= link_to User.find_by(id: avg.user).username, user_path(avg.user) %></p>
+            <p><%= avg.average %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
