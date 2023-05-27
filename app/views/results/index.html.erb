@@ -12,7 +12,7 @@
       <% end %>
     </div>
     <div class="cards">
-      <% @results.reverse.each do |result| %>
+      <% @results.sort_by(&:edition_int).reverse.each do |result| %>
         <div class="result-category">
           <div class="result-info">
             <% unless result.edition.nil? and result.score.nil? %>
@@ -31,5 +31,6 @@
         </div>
       <% end %>
     </div>
+    <%= will_paginate @results %>
   <% end %>
 </div>

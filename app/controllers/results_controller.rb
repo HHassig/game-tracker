@@ -2,7 +2,11 @@ class ResultsController < ApplicationController
   def index
     @game = Game.find(params[:game_id])
     @average = get_average(@game, current_user)
-    @results = Result.where(game: @game.id, user: current_user).sort_by(&:edition_int)
+    @results = Result.where(game: @game.id, user: current_user)
+    @results = @results.sort_by(&:edition_int).reverse
+    @results = @results.paginate(:page => params[:page], per_page: 8)
+    # @results = @results.paginate(:page => params[:page])
+    # @results = @results.reorder("edition")
   end
 
   def new

@@ -1,6 +1,7 @@
 class Result < ApplicationRecord
   # belongs_to :user
   # belongs_to :game
+  # default_scope :order => "edition"
 
   def get_score(guess)
     as_array = guess.split()
