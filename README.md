@@ -1,1 +1,2 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Play, record, and compare your daily games scores with your friends.
+Follow your friends so that they don't have to share their score to multiple chat threads!
