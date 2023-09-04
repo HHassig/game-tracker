@@ -3,5 +3,9 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import PortfolioListToggleController from "./portfolio_list_toggle_controller"
+application.register("portfolio-list-toggle", PortfolioListToggleController)
