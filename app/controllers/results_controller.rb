@@ -37,7 +37,7 @@ class ResultsController < ApplicationController
     @result = Result.find(params[:id])
     @user = User.find(@result.user)
     @edition = @result.edition
-    @friends = current_user.following
+    @friends = Follow.where(followee: current_user.id)
     @results = Result.where(game: @game, edition: @edition)
     @leader = User.find(@results.min_by(&:score).user)
   end

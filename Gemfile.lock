@@ -120,7 +120,6 @@ GEM
     erubi (1.12.0)
     execjs (2.8.1)
     ffi (1.15.5)
-    followability (1.1.1)
     font-awesome-sass (6.4.0)
       sassc (~> 2.0)
     globalid (1.1.0)
@@ -292,7 +291,6 @@ DEPENDENCIES
   devise
   dockerfile-rails (>= 1.2)
   dotenv-rails
-  followability (~> 1.1)
   font-awesome-sass (~> 6.1)
   jbuilder
   jsbundling-rails

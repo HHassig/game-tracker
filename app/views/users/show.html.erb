@@ -16,26 +16,28 @@
         <div class="follow">
           <h4>Following</h4>
           <% if @following %>
-            <% if @following.size > 0 %>
-              <% @following.each do |friend| %>
-                <div class="user-small">
-                  <%= link_to friend.username, user_path(friend) %>
-                  <% if current_user.following?(friend) %>
-                    <%= button_to "<i class='fa-solid fa-user-slash'></i>".html_safe, unfollow_path(friend), class: "btn btn-small" %>
-                  <% else %>
-                    <%= button_to "<i class='fa-solid fa-user-plus'></i>".html_safe, follow_path(friend), class: "btn btn-small" %>
-                  <% end %>
-                </div>
-              <% end %>
+            <% @following.each do |friend| %>
+              <div class="user-small">
+                <%= link_to User.find(friend.followee).username, user_path(User.find(friend.followee)) %>
+                <% unless Follow.where(follower: current_user.id, followee: friend.followee).empty? %>
+                  <%= link_to "<i class='fa-solid fa-user-slash'></i>".html_safe, follow_path(Follow.where(follower: current_user.id, followee: friend.followee).first), data: { turbo_method: :delete }, class: "btn btn-small" %>
+                <% else %>
+                  <%= link_to "<i class='fa-solid fa-user-plus'></i>".html_safe, follows_path(follower: current_user.id, followee: friend.followee), data: { turbo_method: :post }, class: "btn btn-small" %>
+                <% end %>
+              </div>
             <% end %>
           <% end %>
         </div>
         <div class="follow">
           <h4>Followers</h4>
-          <% if @following %>
-            <% if @followers.size > 0 %>
-              <% @followers.each do |friend| %>
-                <p><%= link_to friend.username, user_path(friend) %></p>
+          <% if @followers %>
+            <% @followers.each do |friend| %>
+              <div class="user-small">
+              <%= link_to User.find(friend.follower).username, user_path(User.find(friend.follower)) %>
+              <% unless Follow.where(follower: current_user.id, followee: friend.follower).empty? %>
+                <%= link_to "<i class='fa-solid fa-user-slash'></i>".html_safe, follow_path(Follow.where(follower: current_user.id, followee: friend.follower).first), data: { turbo_method: :delete }, class: "btn btn-small" %>
+              <% else %>
+                <%= link_to "<i class='fa-solid fa-user-plus'></i>".html_safe, follows_path(follower: current_user.id, followee: friend.follower), data: { turbo_method: :post }, class: "btn btn-small" %>
               <% end %>
             <% end %>
           <% end %>
@@ -50,10 +52,10 @@
         <p><%= image_tag "https://i.imgur.com/djGIukc.png", class: "avatar-large" %></p>
       <% end %>
       <div class="card-product-infos">
-        <% if current_user.following?(@user) %>
-          <%= button_to "<i class='fa-solid fa-user-slash'></i>".html_safe, unfollow_path(@user), class: "btn btn-flat" %>
+        <% unless Follow.where(follower: current_user.id, followee: @user.id).empty? %>
+          <%= link_to "<i class='fa-solid fa-user-slash'></i>".html_safe, follow_path(Follow.where(follower: current_user.id, followee: @user.id).first), data: { turbo_method: :delete }, class: "btn btn-flat" %>
         <% else %>
-          <%= button_to "<i class='fa-solid fa-user-plus'></i>".html_safe, follow_path(@user), class: "btn btn-flat" %>
+          <%= link_to "<i class='fa-solid fa-user-plus'></i>".html_safe, follows_path(follower: current_user.id, followee: @user.id), data: { turbo_method: :post }, class: "btn btn-flat" %>
         <% end %>
         <p><%= button_to "Me", user_path(current_user), class: "btn btn-flat", method: :get %></p>
       </div>

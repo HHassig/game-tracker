@@ -5,7 +5,5 @@ Rails.application.routes.draw do
   resources :games do
     resources :results
   end
-  post 'users/:id/follow', to: "users#follow", as: "follow"
-  post 'users/:id/unfollow', to: "users#unfollow", as: "unfollow"
-  post 'users/:id/accept', to: "users#accept", as: "accept"
+  resources :follows
 end

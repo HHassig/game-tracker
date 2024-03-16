@@ -81,7 +81,5 @@ gem "dockerfile-rails", ">= 1.2", :group => :development
 
 gem "redis", "~> 5.0"
 
-gem "followability", "~> 1.1"
-gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
 gem 'will_paginate'

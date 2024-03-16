@@ -1,26 +1,18 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
+  # skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_user, only: %i[show edit update follow unfollow]
 
   def index
     @games = Game.all
-    if params[:search].present?
-      # sql_query = <<~SQL
-      #   users.username @@ :query
-      # SQL
-      @search_term = params[:search]
-      @user = User.find_by(username: @search_term)
-      # @user.find_or_create_by(username: "%#{@search_term}%")
-      # raise
-    end
-    @following = current_user.following
-    @followers = current_user.followers
+    @user = User.find_by(username: params[:search]) if params[:search].present?
+    @following = Follow.where(follower: current_user.id)
+    @followers = Follow.where(followee: current_user.id)
     @results = Result.all
   end
 
   def show
-    @following = current_user.following
-    @followers = current_user.followers
+    @following = Follow.where(follower: current_user.id)
+    @followers = Follow.where(followee: current_user.id)
   end
 
   def edit
@@ -32,29 +24,6 @@ class UsersController < ApplicationController
     else
       redirect_to user_path(@user), notice: 'Username already taken.'
     end
-  end
-
-  def follow
-    current_user.send_follow_request_to(@user)
-    @user.accept_follow_request_of(current_user)
-    # redirect_to user_path(@user)
-    redirect_back(fallback_location: user_path(@user))
-  end
-
-  def unfollow
-    current_user.unfollow(@user)
-    # redirect_to user_path(@user)
-    redirect_back(fallback_location: user_path(@user))
-  end
-
-  # def accept
-  #   current_user.accept_follow_request_of(@user)
-  # end
-
-  def decline
-  end
-
-  def cancel
   end
 
   private

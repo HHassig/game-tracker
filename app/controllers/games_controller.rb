@@ -33,19 +33,6 @@ class GamesController < ApplicationController
     @user_average = Average.find_by(game: @game, user: current_user).average if Average.find_by(game: @game, user: current_user)
   end
 
-  def follow
-    @game = Game.find(params[:id])
-    current_user.send_follow_request_to(@game)
-    @game.accept_follow_request_of(current_user)
-    redirect_to game_path(@game)
-  end
-
-  def unfollow
-    @game = Game.find(params[:id])
-    current_user.unfollow_game(@game)
-    redirect_to game_path(@game)
-  end
-
   private
 
   def find_other(my_games)
