@@ -1,5 +1,5 @@
 <div class="game-container">
-  <h2>New Game</h2>
+  <h2>Edit Game</h2>
   <% unless @game.nil? %>
     <div class="form-group" style="width: 80%; margin: auto;" >
       <%= simple_form_for @game, data:{ turbo: false } do |f| %>
@@ -10,6 +10,6 @@
       <% end %>
     </div>
   <% else %>
-    <p>Only an admin can add a new game</p>
+    <p>Only an admin can edit a  game</p>
   <% end %>
 </div>
